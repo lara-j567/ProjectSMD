@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">QUIZ ME</string>
+    <string name="userType">
+        <item>Teacher</item>
+        <item>Student</item>
+    </string>
+</resources>
