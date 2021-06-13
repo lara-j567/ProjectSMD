@@ -45,6 +45,7 @@ public class Login extends AppCompatActivity {
         populate_UserType();
 
 
+        //getting text from text boxes and checking if exists in database
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +87,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    //setting spinner data
     private void populate_UserType() {
 
         userSpinner = findViewById(R.id.userType);

@@ -11,6 +11,7 @@
         android:layout_marginLeft="150sp"
         android:text="Add" />
 
+
     <ListView
         android:id="@+id/list1"
         android:layout_width="match_parent"

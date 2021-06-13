@@ -47,6 +47,7 @@ public class SignIn extends AppCompatActivity {
 
         populate_UserType();
 
+        //getting inputs on sign in button click
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +79,7 @@ public class SignIn extends AppCompatActivity {
 
     }
 
+    //adding data to database
     public void insertData(String type , String userEmail , String userName , String userPassword){
 
         //this class is putting values in database
@@ -105,6 +107,7 @@ public class SignIn extends AppCompatActivity {
 
     }
 
+    //setting user types here
     private void populate_UserType() {
 
 

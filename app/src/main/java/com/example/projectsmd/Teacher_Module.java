@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+//after login as teacher , teacher comes here
 public class Teacher_Module extends AppCompatActivity {
 
     private Button btn1; //log out button

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+//this is main page appears having login and sign in buttons
 public class MainActivity extends AppCompatActivity {
 
     private Button btn1;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         btn1 = findViewById(R.id.logInBtn);
         btn2 = findViewById(R.id.signInBtn);
 
-
+        //login intent
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //sign in intent
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

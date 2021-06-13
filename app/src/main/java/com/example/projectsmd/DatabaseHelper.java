@@ -19,8 +19,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_5 = "PASSWORD";
 
     //table 2 in database
-    public static final String TABLE_NAME2 = "Fill in the blanks quiz";
-    public static final String COL_6 = "Q_ID";
+    public static final String TABLE_NAME2 = "quizOne";
+    public static final String COL_6 = "qID";
     public static final String COL_7 = "QUESTION_TYPE_2";
 
 
@@ -33,9 +33,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String sql1="CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT , USERTYPE TEXT , EMAIL TEXT , USERNAME TEXT , PASSWORD TEXT )";
+        db.execSQL(sql1);
 
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT , USERTYPE TEXT , EMAIL TEXT , USERNAME TEXT , PASSWORD TEXT )");
-        db.execSQL("CREATE TABLE " + TABLE_NAME2 + "(Q_ID INTEGER PRIMARY KEY AUTOINCREMENT , QUESTION_TYPE_2 TEXT )");
+        String sql2="CREATE TABLE " + TABLE_NAME2 + "(qID INTEGER PRIMARY KEY AUTOINCREMENT , QUESTION_TYPE_2 TEXT )";
+        db.execSQL(sql2);
 
 
     }
