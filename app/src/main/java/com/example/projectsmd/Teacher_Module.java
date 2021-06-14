@@ -22,8 +22,9 @@ public class Teacher_Module extends AppCompatActivity {
         setTitle("Make Quizzes");
         btn1 = findViewById(R.id.LogoutBtnT);
         btn2 = findViewById(R.id.QuizBtn1);
-        btn2 = findViewById(R.id.QuizBtn2);
+        btn3 = findViewById(R.id.QuizBtn2);
 
+        //logout redirecting to main screen
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +34,18 @@ public class Teacher_Module extends AppCompatActivity {
             }
         });
 
+        //mcqs button will redirect to mcsq page
         btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent mcqs_intent = new Intent(Teacher_Module.this, MCQS_Quiz.class);
+                startActivity(mcqs_intent);
+            }
+        });
+
+        //mcqs button will redirect to fill in the blanks page
+        btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
