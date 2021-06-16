@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectSMD">
-        <activity android:name=".Add_Quiz_1"></activity>
+        <activity android:name=".Quiz_Name_Form2"></activity>
+        <activity android:name=".Quiz_Name_Form1" />
+        <activity android:name=".Add_Quiz_1" />
         <activity android:name=".MCQS_Quiz" />
         <activity android:name=".Add_Quiz_2" />
         <activity android:name=".Fill_in_the_blank_quiz" />

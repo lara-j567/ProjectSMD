@@ -14,7 +14,6 @@ public class Teacher_Module extends AppCompatActivity {
     private Button btn2; //button 1 mcqs
     private Button btn3; //button fill in the blanks
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,7 @@ public class Teacher_Module extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent mcqs_intent = new Intent(Teacher_Module.this, MCQS_Quiz.class);
+                Intent mcqs_intent = new Intent(Teacher_Module.this, Quiz_Name_Form1.class);
                 startActivity(mcqs_intent);
             }
         });
@@ -49,7 +48,7 @@ public class Teacher_Module extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent page1 = new Intent(Teacher_Module.this , Fill_in_the_blank_quiz.class);
+                Intent page1 = new Intent(Teacher_Module.this , Quiz_Name_Form1.class);
                 startActivity(page1);
 
             }

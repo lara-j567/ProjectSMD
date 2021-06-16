@@ -22,15 +22,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME2 = "quizOne";
     public static final String COL_6 = "qID";
     public static final String COL_7 = "QUESTION_TYPE_2";
+    public static final String COL_8 = "quizTitle";
 
 
     //table 3 in database for type 1
-    public static final String TABLE_NAME3="quizTwo";
-    public static final String COL_8="mID";
-    public static final String COL_9="QUESTION_TYPE_1";
+    public static final String TABLE_NAME3 = "quizTwo";
+    public static final String COL_9 = "mID";
+    public static final String COL_10 = "QUESTION_TYPE_1";
+    public static final String COL_11 = "op1";
+    public static final String COL_12 = "op2";
+    public static final String COL_13 = "op3";
+    public static final String COL_14 = "op4";
+    public static final String COL_15 = "quizTitle";
 
 
-
+    //table 4 in database for quiz names list
+    public static final String TABLE_NAME4 = "quizList";
+    public static final String COL_16 = "quizID";
+    public static final String COL_17 = "TITLE";
 
 
     public DatabaseHelper(Context context) {
@@ -39,16 +48,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql1="CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT , USERTYPE TEXT , EMAIL TEXT , USERNAME TEXT , PASSWORD TEXT )";
+
+        //user table foregin and sign up
+        String sql1 = "CREATE TABLE " +
+                TABLE_NAME +
+                "(ID INTEGER PRIMARY KEY AUTOINCREMENT , " +
+                "USERTYPE TEXT ," +
+                "EMAIL TEXT , " +
+                "USERNAME TEXT , " +
+                "PASSWORD TEXT )";
+
         db.execSQL(sql1);
 
-        String sql2="CREATE TABLE " + TABLE_NAME2 + "(qID INTEGER PRIMARY KEY AUTOINCREMENT , QUESTION_TYPE_2 TEXT )";
+        String sql4 = "CREATE TABLE " +
+                TABLE_NAME4 +
+                "(quizID TEXT PRIMARY KEY," +
+                "TITLE TEXT )";
+
+
+        db.execSQL(sql4);
+
+
+
+
+        String sql2 = "CREATE TABLE " +
+                TABLE_NAME2 +
+                "(qID INTEGER PRIMARY KEY AUTOINCREMENT , " +
+                "QUESTION_TYPE_2 TEXT ,"+
+                "FOREIGN KEY (quizID) REFERENCES quizList (quizID))";
+
         db.execSQL(sql2);
 
-        String sql3="CREATE TABLE " + TABLE_NAME3 + "(mID INTEGER PRIMARY KEY AUTOINCREMENT , QUESTION_TYPE_1 TEXT )";
+        String sql3 = "CREATE TABLE " +
+                TABLE_NAME3 +
+                "(mID INTEGER PRIMARY KEY AUTOINCREMENT ," +
+                "QUESTION_TYPE_1 TEXT  ," +
+                "OP1 TEXT," +
+                "OP2 TEXT," +
+                "OP3 TEXT ," +
+                "OP4 TEXT ,"+
+                "FOREIGN KEY (quizID) REFERENCES quizList (quizID))";
+
+
         db.execSQL(sql3);
-
-
 
 
 
@@ -87,23 +129,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getQuestionType1List(){
+    public Cursor getQuestionType1List() {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM "+TABLE_NAME2 , null);
-        return  data;
-
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME2, null);
+        return data;
 
 
     }
 
-    public Cursor getQuestionType2List(){
+    public Cursor getQuestionType2List() {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM "+TABLE_NAME3 , null);
-        return  data;
-
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME3, null);
+        return data;
 
 
     }
+
+
 }
