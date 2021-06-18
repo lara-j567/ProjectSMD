@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        //user table foregin and sign up
+        //user table for login and sign up
         String sql1 = "CREATE TABLE " +
                 TABLE_NAME +
                 "(ID INTEGER PRIMARY KEY AUTOINCREMENT , " +
@@ -60,6 +60,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(sql1);
 
+
+        //quiz list table
         String sql4 = "CREATE TABLE " +
                 TABLE_NAME4 +
                 "(quizID TEXT PRIMARY KEY," +
@@ -70,15 +72,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-
+        //quiz type 1
         String sql2 = "CREATE TABLE " +
                 TABLE_NAME2 +
                 "(qID INTEGER PRIMARY KEY AUTOINCREMENT , " +
                 "QUESTION_TYPE_2 TEXT ,"+
-                "FOREIGN KEY (quizID) REFERENCES quizList (quizID))";
+                "quizID TEXT REFERENCES "+TABLE_NAME4+")";
 
         db.execSQL(sql2);
 
+        //quiz type 2
         String sql3 = "CREATE TABLE " +
                 TABLE_NAME3 +
                 "(mID INTEGER PRIMARY KEY AUTOINCREMENT ," +
@@ -87,7 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "OP2 TEXT," +
                 "OP3 TEXT ," +
                 "OP4 TEXT ,"+
-                "FOREIGN KEY (quizID) REFERENCES quizList (quizID))";
+                "quizID  TEXT REFERENCES "+ TABLE_NAME4+")";
 
 
         db.execSQL(sql3);
@@ -102,6 +105,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME); //drop table if exists
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME2); //drop table if exists
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME3); //drop table if exists
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME4); //drop table if exists
 
         onCreate(db);
 

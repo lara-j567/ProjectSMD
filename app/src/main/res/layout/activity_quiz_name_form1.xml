@@ -11,13 +11,15 @@
         android:id="@+id/quizName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Write quiz name here" />
+        android:hint="Write quiz name here"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/makeQuizBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:text="Make Quiz" />
 
 </LinearLayout>

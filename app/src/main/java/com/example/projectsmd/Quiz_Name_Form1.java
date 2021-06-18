@@ -38,7 +38,7 @@ public class Quiz_Name_Form1 extends AppCompatActivity {
                 db = openHelper.getWritableDatabase();
                 String name = quizName.getText().toString();
                 insertData(name);
-                Intent i=new Intent(Quiz_Name_Form1.this , MCQS_Quiz.class);
+                Intent i=new Intent(Quiz_Name_Form1.this , Fill_in_the_blank_quiz.class);
                 i.putExtra("Quiz Name", quizName.getText().toString());
                 startActivity(i);
 
@@ -49,6 +49,7 @@ public class Quiz_Name_Form1 extends AppCompatActivity {
     }
 
     private void insertData(String name) {
+
 
         ContentValues contentValues=new ContentValues();
         contentValues.put(DatabaseHelper.COL_16,name);
