@@ -18,7 +18,7 @@ public class Add_Quiz_2 extends AppCompatActivity {
     Button view_question;
     SQLiteDatabase db;
     SQLiteOpenHelper openHelper;
-
+    String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,8 @@ public class Add_Quiz_2 extends AppCompatActivity {
         btn_add_question =findViewById(R.id.add_btn);
         view_question = findViewById(R.id.view_btn);
         openHelper = new DatabaseHelper(this);
+        Intent key_intent=getIntent();
+        key= key_intent.getExtras().getString("Key");
 
         //type and add question here
         btn_add_question.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +42,7 @@ public class Add_Quiz_2 extends AppCompatActivity {
                 if(statement.length()!=0){
 
                     db = openHelper.getWritableDatabase();
-                    insertData(statement);
+                    insertData(statement,key);
                     question.setText("");
 
 
@@ -65,11 +67,12 @@ public class Add_Quiz_2 extends AppCompatActivity {
     }
 
     //adding data in database
-    private void insertData(String statement) {
+    private void insertData(String statement,String key) {
 
         ContentValues contentValues = new ContentValues();
        // contentValues.put(DatabaseHelper.COL_2 , type);
-        contentValues.put(DatabaseHelper.COL_7 , statement);
+        contentValues.put(DatabaseHelper.COL_6, key);
+        contentValues.put(DatabaseHelper.COL_8 , statement);
 
         long id=db.insert(DatabaseHelper.TABLE_NAME2,null , contentValues);
 

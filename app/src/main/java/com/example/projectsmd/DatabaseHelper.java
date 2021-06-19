@@ -145,7 +145,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getQuestionType2List() {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME3, null);
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4, null);
         return data;
 
 
