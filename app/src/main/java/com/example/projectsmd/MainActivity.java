@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 //this is main page appears having login and sign in buttons
+//this contains two buttons log in and sign up redirects user according to btn click
 public class MainActivity extends AppCompatActivity {
 
     private Button btn1;

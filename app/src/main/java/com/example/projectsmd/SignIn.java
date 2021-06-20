@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+//this is sign in class
+//student and teacher go to thier pages afer clicking on sign in btn
 public class SignIn extends AppCompatActivity {
 
     private Spinner userSpinner;
@@ -79,7 +81,7 @@ public class SignIn extends AppCompatActivity {
 
     }
 
-    //adding data to database
+    //this function writes user credentials to database
     public void insertData(String type , String userEmail , String userName , String userPassword){
 
         //this class is putting values in database

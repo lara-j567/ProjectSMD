@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//This class lets teacher to add quiz name and add it in the database
 public class Quiz_Name_Form1 extends AppCompatActivity {
 
     private EditText quizName;
@@ -38,7 +39,7 @@ public class Quiz_Name_Form1 extends AppCompatActivity {
                 db = openHelper.getWritableDatabase();
                 String name = quizName.getText().toString();
                 insertData(name);
-                Intent i=new Intent(Quiz_Name_Form1.this , Fill_in_the_blank_quiz.class);
+                Intent i=new Intent(Quiz_Name_Form1.this , MCQS_Quiz.class);
                 i.putExtra("Quiz Name", quizName.getText().toString());
                 startActivity(i);
 
@@ -48,6 +49,7 @@ public class Quiz_Name_Form1 extends AppCompatActivity {
 
     }
 
+    //data write function
     private void insertData(String name) {
 
 

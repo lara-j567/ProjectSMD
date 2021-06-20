@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+//database helper class
+//this class contains all the tables and colums names in database
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "register.db";
@@ -40,6 +42,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME4 = "quizList";
     public static final String COL_16 = "quizID";
     public static final String COL_17 = "TITLE";
+
+    //quiz types
+    public static final String COL_18 = "QUIZ_TYPE";
 
 
     public DatabaseHelper(Context context) {
@@ -76,8 +81,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String sql2 = "CREATE TABLE " +
                 TABLE_NAME2 +
                 "(qID INTEGER PRIMARY KEY AUTOINCREMENT , " +
-                "QUESTION_TYPE_2 TEXT ,"+
-                "quizID TEXT REFERENCES "+TABLE_NAME4+")";
+                "QUESTION_TYPE_2 TEXT,"+
+                "QUIZ_TYPE TEXT)";
 
         db.execSQL(sql2);
 
@@ -89,8 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "OP1 TEXT," +
                 "OP2 TEXT," +
                 "OP3 TEXT ," +
-                "OP4 TEXT ,"+
-                "quizID  TEXT REFERENCES "+ TABLE_NAME4+")";
+                "OP4 TEXT )";
 
 
         db.execSQL(sql3);
@@ -143,6 +147,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getQuestionType2List() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME3, null);
+        return data;
+
+
+    }
+
+    public Cursor getQuizList() {
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4, null);

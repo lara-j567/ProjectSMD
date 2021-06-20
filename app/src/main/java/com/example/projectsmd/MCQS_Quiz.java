@@ -10,7 +10,7 @@ import android.widget.*;
 
 import java.util.ArrayList;
 
-//main component appering after selection of btn 1 in teacher module
+//main component appering after selection of btn 1 in teacher module and adding quiz name
 public class MCQS_Quiz extends AppCompatActivity {
 
     private Button btn_add;
@@ -18,9 +18,6 @@ public class MCQS_Quiz extends AppCompatActivity {
     private ListView lv;
     ArrayList<Mcq> fetchedQuestions = new ArrayList<>();
     DatabaseHelper databaseHelper;
-
-
-
 
 
     @Override
@@ -49,33 +46,31 @@ public class MCQS_Quiz extends AppCompatActivity {
     private void getDatafromDB() {
 
         Cursor data = databaseHelper.getQuestionType2List();
-        Mcq mcq_temp=new Mcq();
+        Mcq mcq_temp = new Mcq();
 
-        if(data.getCount()==0){
+        if (data.getCount() == 0) {
 
             Toast.makeText(this, "No questions added.Click on add button to get started", Toast.LENGTH_SHORT).show();
 
 
-        }
-
-        else
-        {
-            while(data.moveToNext()){
+        } else {
+            while (data.moveToNext()) {
 
                 mcq_temp.setStatement(data.getString(1));
                 mcq_temp.setOption1(data.getColumnName(2));
-                mcq_temp.setOption1(data.getColumnName(3));
-                mcq_temp.setOption1(data.getColumnName(4));
-                mcq_temp.setOption1(data.getColumnName(5));
+              //  Toast.makeText(this, data.getColumnName(2), Toast.LENGTH_SHORT).show();
+                mcq_temp.setOption2(data.getColumnName(3));
+                mcq_temp.setOption3(data.getColumnName(4));
+                mcq_temp.setOption3(data.getColumnName(5));
 
                 fetchedQuestions.add(mcq_temp);
 
+            }
 
+            for(Mcq m : fetchedQuestions){
 
-
-
-
-
+                Toast.makeText(this, m.getStatement(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, m.getOption2(), Toast.LENGTH_SHORT).show();
             }
 
 

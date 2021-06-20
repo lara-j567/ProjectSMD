@@ -34,21 +34,22 @@ public class Teacher_Module extends AppCompatActivity {
         });
 
         //mcqs button will redirect to mcsq page
+        //add quiz name first
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent mcqs_intent = new Intent(Teacher_Module.this, Quiz_Name_Form1.class);
+                Intent mcqs_intent = new Intent(Teacher_Module.this, MCQS_Quiz.class);
                 startActivity(mcqs_intent);
             }
         });
 
-        //mcqs button will redirect to fill in the blanks page
+        //fill in the blank button will redirect to fill in the blanks page(add quiz name first)
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent page1 = new Intent(Teacher_Module.this , Quiz_Name_Form1.class);
+                Intent page1 = new Intent(Teacher_Module.this , Fill_in_the_blank_quiz.class);
                 startActivity(page1);
 
             }

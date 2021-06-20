@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-//adding fill in the blonk quiz here
+//adding fill in the blink quiz here
 public class Fill_in_the_blank_quiz extends AppCompatActivity {
 
     private Button addQuizBtn;
@@ -39,9 +39,8 @@ public class Fill_in_the_blank_quiz extends AppCompatActivity {
        // sqLiteOpenHelper = new DatabaseHelper(this);
         //db = sqLiteOpenHelper.getReadableDatabase();
         databaseHelper = new DatabaseHelper(this);
-        Intent q_intent= getIntent();
-        quizName = q_intent.getExtras().getString("Quiz Name");
-        Toast.makeText(this, quizName, Toast.LENGTH_SHORT).show();
+
+
         getDatafromDB();
         //if not data present or want to add data
         addQuizBtn.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +48,7 @@ public class Fill_in_the_blank_quiz extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent add_question = new Intent(Fill_in_the_blank_quiz.this, Add_Quiz_2.class);
-                add_question.putExtra("Key", quizName);
+               // add_question.putExtra("Key", quizName);
                 startActivity(add_question);
 
 
@@ -67,7 +66,7 @@ public class Fill_in_the_blank_quiz extends AppCompatActivity {
        // cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_NAME2, null);
         if(data.getCount()==0){
 
-            Toast.makeText(this, "no question", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "no question added.Click on add button to add question.", Toast.LENGTH_SHORT).show();
         }
 
         else {

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+//here user can login after inputs verification
 public class Login extends AppCompatActivity {
 
     private Spinner userSpinner;
@@ -55,7 +56,13 @@ public class Login extends AppCompatActivity {
                 String pass = password.getText().toString();
                 /*cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_NAME +
                         "WHERE " + DatabaseHelper.COL_4 + "=? AND " +  DatabaseHelper.COL_5 + " =?" ,new String[]{name , pass} );*/
-                cursor = db.rawQuery("SELECT *FROM " + DatabaseHelper.TABLE_NAME + " WHERE " + DatabaseHelper.COL_2 + "=? AND " + DatabaseHelper.COL_4 + "=? AND " + DatabaseHelper.COL_5 + "=?", new String[]{choice, name, pass});
+                cursor = db.rawQuery("SELECT *FROM " +
+                        DatabaseHelper.TABLE_NAME +
+                        " WHERE " +
+                        DatabaseHelper.COL_2 +
+                        "=? AND " + DatabaseHelper.COL_4 +
+                        "=? AND " + DatabaseHelper.COL_5 +
+                        "=?", new String[]{choice, name, pass});
 
                 if (cursor != null) {
 
@@ -63,6 +70,7 @@ public class Login extends AppCompatActivity {
 
                         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
+                        //redirecting users
                         if (choice.toLowerCase().equals("teacher")) {
 
                             Intent teacher_intent = new Intent(Login.this, Teacher_Module.class);
