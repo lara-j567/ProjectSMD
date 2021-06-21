@@ -60,7 +60,7 @@ public class SignIn extends AppCompatActivity {
                 String userPassword = password.getText().toString();
 
 
-                if ((userEmail.length() != 0 &&( userEmail.contains("@gmail.com") || userEmail.contains("@yahoo.com")  || userEmail.contains("@hotmail.com")  ) && userName.length() != 0 && userPassword.length() != 0) {
+                if ((userEmail.length() != 0 &&( userEmail.contains("@gmail.com") || userEmail.contains("@yahoo.com")  || userEmail.contains("@hotmail.com")  ) && userName.length() != 0 && userPassword.length() != 0)) {
 
                     Toast.makeText(SignIn.this, "register successfully", Toast.LENGTH_SHORT).show();
                     insertData(choice, userEmail, userName, userPassword);
