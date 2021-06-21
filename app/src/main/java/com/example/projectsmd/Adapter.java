@@ -41,6 +41,12 @@ public class Adapter extends ArrayAdapter<Mcq> {
         op3= convertview.findViewById(R.id.op3);
         op4= convertview.findViewById(R.id.op4);
 
+        statement.setText(mcq_obj.getStatement());
+        op1.setText(mcq_obj.getOption1());
+        op2.setText(mcq_obj.getOption2());
+        op3.setText(mcq_obj.getOption3());
+        op4.setText(mcq_obj.getOption4());
+
         return convertview;
 
 

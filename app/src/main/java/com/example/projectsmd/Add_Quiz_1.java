@@ -82,6 +82,8 @@ public class Add_Quiz_1 extends AppCompatActivity {
     public void insertData(String main_text , String op1 , String op2 ,String op3 ,String op4){
 
         db = openHelper.getWritableDatabase();
+
+        Toast.makeText(this, main_text+op1+op2, Toast.LENGTH_SHORT).show();
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.COL_10 , main_text);
         contentValues.put(DatabaseHelper.COL_11 , op1);

@@ -27,6 +27,8 @@ public class MCQS_Quiz extends AppCompatActivity {
 
         btn_add = findViewById(R.id.btnAddQuestionType1);
         btn_publish = findViewById(R.id.btnPublish);
+        lv =findViewById(R.id.list1);
+
         databaseHelper = new DatabaseHelper(this);
         getDatafromDB();
 
@@ -57,20 +59,25 @@ public class MCQS_Quiz extends AppCompatActivity {
             while (data.moveToNext()) {
 
                 mcq_temp.setStatement(data.getString(1));
-                mcq_temp.setOption1(data.getColumnName(2));
+                mcq_temp.setOption1(data.getString(2));
               //  Toast.makeText(this, data.getColumnName(2), Toast.LENGTH_SHORT).show();
-                mcq_temp.setOption2(data.getColumnName(3));
-                mcq_temp.setOption3(data.getColumnName(4));
-                mcq_temp.setOption3(data.getColumnName(5));
+                mcq_temp.setOption2(data.getString(3));
+                mcq_temp.setOption3(data.getString(4));
+                mcq_temp.setOption3(data.getString(5));
 
                 fetchedQuestions.add(mcq_temp);
+
+                Adapter1 mcq_adapter = new Adapter1(this , 0 , fetchedQuestions);
+                lv.setAdapter(mcq_adapter);
 
             }
 
             for(Mcq m : fetchedQuestions){
 
                 Toast.makeText(this, m.getStatement(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, m.getOption2(), Toast.LENGTH_SHORT).show();
+
+               // Toast.makeText(this, m.getStatement(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, m.getOption2(), Toast.LENGTH_SHORT).show();
             }
 
 
