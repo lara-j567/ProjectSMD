@@ -25,11 +25,10 @@ public class SignIn extends AppCompatActivity {
     private Button btn;
     SQLiteOpenHelper openHelper;
     SQLiteDatabase db;
-    EditText email , username,password;
+    EditText email, username, password;
 
 
-    ArrayList <String> user = new ArrayList<String>();
-
+    ArrayList<String> user = new ArrayList<String>();
 
 
     @Override
@@ -46,7 +45,6 @@ public class SignIn extends AppCompatActivity {
         password = findViewById(R.id.pwd);
 
 
-
         populate_UserType();
 
         //getting inputs on sign in button click
@@ -60,51 +58,60 @@ public class SignIn extends AppCompatActivity {
                 String userEmail = email.getText().toString();
                 String userName = username.getText().toString();
                 String userPassword = password.getText().toString();
-                insertData(choice , userEmail,userName , userPassword);
 
-                Toast.makeText(SignIn.this, "register successfully", Toast.LENGTH_SHORT).show();
-                if (choice.toLowerCase().equals("teacher")) {
 
-                    Intent teacher_intent = new Intent(SignIn.this, Teacher_Module.class);
-                    startActivity(teacher_intent);
+                if ((userEmail.length() != 0 &&( userEmail.contains("@gmail.com") || userEmail.contains("@yahoo.com")  || userEmail.contains("@hotmail.com")  ) && userName.length() != 0 && userPassword.length() != 0) {
+
+                    Toast.makeText(SignIn.this, "register successfully", Toast.LENGTH_SHORT).show();
+                    insertData(choice, userEmail, userName, userPassword);
+
+                    if (choice.toLowerCase().equals("teacher")) {
+
+                        Intent teacher_intent = new Intent(SignIn.this, Teacher_Module.class);
+                        startActivity(teacher_intent);
+                    }
+
+                    if (choice.toLowerCase().equals("student")) {
+
+                        Intent student_intent = new Intent(SignIn.this, Student_Module.class);
+                        startActivity(student_intent);
+                    }
+
+                } else {
+                    Toast.makeText(SignIn.this, "Invalid email format or empty credentials!Try to sign in again.", Toast.LENGTH_SHORT).show();
                 }
-
-                if (choice.toLowerCase().equals("student")) {
-
-                    Intent student_intent = new Intent(SignIn.this, Student_Module.class);
-                    startActivity(student_intent);
-                }
-
             }
+
+
         });
 
 
     }
 
     //this function writes user credentials to database
-    public void insertData(String type , String userEmail , String userName , String userPassword){
+    public void insertData(String type, String userEmail, String userName, String userPassword) {
 
         //this class is putting values in database
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DatabaseHelper.COL_2 , type);
-        contentValues.put(DatabaseHelper.COL_3 , userEmail);
-        contentValues.put(DatabaseHelper.COL_4 , userName);
-        contentValues.put(DatabaseHelper.COL_5 , userPassword);
-        long id=db.insert(DatabaseHelper.TABLE_NAME,null , contentValues);
+        contentValues.put(DatabaseHelper.COL_2, type);
+        contentValues.put(DatabaseHelper.COL_3, userEmail);
+        contentValues.put(DatabaseHelper.COL_4, userName);
+        contentValues.put(DatabaseHelper.COL_5, userPassword);
+        long id = db.insert(DatabaseHelper.TABLE_NAME, null, contentValues);
 
-        if(id == -1){
+        if (id == -1) {
 
             Toast.makeText(this, "data write failed", Toast.LENGTH_SHORT).show();
 
-        }
+        } else {
 
-        else{
+
+
+
 
 
             Toast.makeText(this, "data write successful", Toast.LENGTH_SHORT).show();
         }
-
-
 
 
     }
